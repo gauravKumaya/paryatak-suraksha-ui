@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import { Loader } from "lucide-react";
+import { Loader, Search } from "lucide-react";
 
 interface GoogleMapProps {
   className?: string;
@@ -211,14 +211,17 @@ const GoogleMap = ({ className = "", userLocation }: GoogleMapProps) => {
       
       {/* Search Bar - Moved inside map component for autocomplete */}
       <div className="absolute top-4 left-4 right-4 md:left-6 md:right-auto md:w-96 z-40">
-        <input
-          ref={searchInputRef}
-          type="text"
-          placeholder="Find the Safest Route to..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full px-4 py-3 pl-10 pr-4 bg-background/95 backdrop-blur-sm rounded-lg shadow-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary"
-        />
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
+          <input
+            ref={searchInputRef}
+            type="text"
+            placeholder="Find the Safest Route to..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full px-4 py-3 pl-10 pr-4 bg-background/95 backdrop-blur-sm rounded-lg shadow-lg border border-border focus:outline-none focus:ring-2 focus:ring-primary"
+          />
+        </div>
       </div>
 
       {/* Map Container */}
