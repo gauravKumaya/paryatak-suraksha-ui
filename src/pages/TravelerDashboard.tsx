@@ -1,17 +1,15 @@
 import { useState } from "react";
-import { Search, Menu, User, Settings, LogOut, Navigation, MapPin } from "lucide-react";
+import { Menu, User, Settings, LogOut, Navigation, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Logo from "@/components/Logo";
 import SOSButton from "@/components/SOSButton";
-import SafetyMap from "@/components/SafetyMap";
+import GoogleMap from "@/components/GoogleMap";
 import { useNavigate } from "react-router-dom";
 
 const TravelerDashboard = () => {
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLogout = () => {
@@ -21,7 +19,7 @@ const TravelerDashboard = () => {
   return (
     <div className="relative h-screen overflow-hidden">
       {/* Map Container */}
-      <SafetyMap className="absolute inset-0" userLocation={{ lat: 28.6139, lng: 77.2090 }} />
+      <GoogleMap className="absolute inset-0" userLocation={{ lat: 28.6139, lng: 77.2090 }} />
       
       {/* Top Bar */}
       <div className="absolute top-0 left-0 right-0 bg-background/95 backdrop-blur-sm border-b border-border z-40">
@@ -90,38 +88,7 @@ const TravelerDashboard = () => {
         </div>
       </div>
       
-      {/* Search Bar */}
-      <div className="absolute top-24 left-4 right-4 md:left-6 md:right-auto md:w-96 z-40">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
-          <Input
-            type="text"
-            placeholder="Find the Safest Route to..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 pr-4 py-6 bg-background/95 backdrop-blur-sm shadow-lg"
-          />
-        </div>
-      </div>
-      
-      {/* Safety Legend */}
-      <div className="absolute bottom-32 left-4 bg-background/95 backdrop-blur-sm p-4 rounded-lg shadow-lg z-40">
-        <p className="text-xs font-semibold mb-2">Safety Zones</p>
-        <div className="space-y-2">
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-safety-green" />
-            <span className="text-xs">Safe</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-safety-yellow" />
-            <span className="text-xs">Caution</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-safety-red" />
-            <span className="text-xs">Danger</span>
-          </div>
-        </div>
-      </div>
+      {/* Note: Search bar and legend are now integrated within the GoogleMap component */}
       
       {/* SOS Button */}
       <SOSButton />
