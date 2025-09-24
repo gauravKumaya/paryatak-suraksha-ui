@@ -111,7 +111,7 @@ const GoogleMap = ({ className = "", userLocation }: GoogleMapProps) => {
       }
 
       // Get API key from environment (in production, this would be from your backend)
-      const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || 'YOUR_API_KEY_HERE';
+      const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || 'AIzaSyAiTikQi7lJlyly4nOxB0slMnwOtYG7h5s';
 
       // Load Google Maps script
       const script = document.createElement("script");
@@ -137,7 +137,6 @@ const GoogleMap = ({ className = "", userLocation }: GoogleMapProps) => {
       const map = new google.maps.Map(mapRef.current, {
         center: userLocation || { lat: 28.6139, lng: 77.2090 },
         zoom: 12,
-        mapId: "DEMO_MAP_ID", // Required for AdvancedMarkerElement
         styles: [
           {
             featureType: "poi",
