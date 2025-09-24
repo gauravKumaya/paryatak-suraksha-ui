@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import ValueCard from "@/components/ValueCard";
 import SafetyHeatmap from "@/components/SafetyHeatmap";
+import PlatformStats from "@/components/PlatformStats";
 
 const LandingPage = () => {
   return (
@@ -37,6 +38,9 @@ const LandingPage = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Platform Stats Section */}
+      <PlatformStats />
 
       {/* Value Section */}
       <section id="features" className="py-20 bg-muted/30">
